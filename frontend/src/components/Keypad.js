@@ -73,5 +73,5 @@ export default function Keypad({ usedKeys, onLetterClick }) {
 		handleMouseOut,
 	])
 
-	return <div className='keyboard'>{letters}</div>
+	return <div>{letters}</div>
 }

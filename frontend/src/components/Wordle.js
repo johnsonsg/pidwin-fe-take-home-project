@@ -12,7 +12,7 @@ export default function Wordle({ solution }) {
 		turn,
 		isCorrect,
 		usedKeys,
-		handleKeyup,
+		handleKeyDown,
 		handleLetterClick,
 		isDisabled,
 		resetGame,
@@ -44,7 +44,7 @@ export default function Wordle({ solution }) {
 				data.result = 'You lose!'
 			}
 
-			handleKeyup({ key: 'Enter' })
+			handleKeyDown({ key: 'Enter' })
 
 		} catch (error) {
 			console.error('Error making API call:', error.message)
@@ -57,15 +57,15 @@ export default function Wordle({ solution }) {
 	}
 
 	useEffect(() => {
-		window.addEventListener('keyup', handleKeyup)
+		window.addEventListener('keydown', handleKeyDown)
 
 		if (isCorrect || turn > 5) {
 			setTimeout(() => setShowModal(true), 1000)
-			window.removeEventListener('keyup', handleKeyup)
+			window.removeEventListener('keydown', handleKeyDown)
 		}
 
-		return () => window.removeEventListener('keyup', handleKeyup)
-	}, [handleKeyup, isCorrect, turn])
+		return () => window.removeEventListener('keydown', handleKeyDown)
+	}, [handleKeyDown, isCorrect, turn])
 
 	return (
 		<div className='game-container'>

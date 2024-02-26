@@ -78,7 +78,7 @@ const useWordle = (solution) => {
 		setCurrentGuess('')
 	}
 
-	const handleKeyup = ({ key }) => {
+	const handleKeyDown = ({ key }) => {
 		if (key === 'Enter') {
 			if (turn > 5) {
 				console.log('you used all your guesses!')
@@ -108,11 +108,11 @@ const useWordle = (solution) => {
 		}
 	}
 
-	useEffect((handleKeyUp) => {
-		window.addEventListener('keyup', handleKeyUp)
+	useEffect((handleKeyDown) => {
+		window.addEventListener('keydown', handleKeyDown)
 
 		return () => {
-			window.removeEventListener('keyup', handleKeyUp)
+			window.removeEventListener('keydown', handleKeyDown)
 		}
 	}, [])
 
@@ -128,7 +128,7 @@ const useWordle = (solution) => {
 		guesses,
 		isCorrect,
 		usedKeys,
-		handleKeyup,
+		handleKeyDown,
 		handleLetterClick,
 		resetGame,
 		isDisabled: isCorrect || currentGuess.length !== 5,
