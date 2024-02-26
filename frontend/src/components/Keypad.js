@@ -50,7 +50,7 @@ export default function Keypad({ usedKeys, onLetterClick }) {
 						return (
 							<div
 								key={index}
-								className={`${color} ${isActive ? 'active' : ''}`}
+								className={`${color} ${isActive ? 'active' : ''} key`}
 								onClick={() => handleLetterClick(key)}
 								onMouseOver={() => handleMouseOver(key)}
 								onMouseOut={handleMouseOut}
