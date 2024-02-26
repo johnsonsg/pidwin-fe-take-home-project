@@ -53,6 +53,7 @@ export default function Wordle({ solution }) {
 
 	const handlePlayAgain = () => {
 		resetGame()
+		setHasWon(false)
 		setShowModal(false)
 	}
 
