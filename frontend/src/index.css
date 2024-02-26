@@ -208,31 +208,10 @@ h1 {
 	}
 }
 
-
-@media (min-width: 530px) {
-  .game-container {
-    width: 530px;
-  }
-  
-  .row > div {
-    width: 60px;
-    height: 60px;
-    font-size: 2.5em;
-    line-height: 60px;
-  }
-
-  .keypad > div {
-    width: 43px;
-    height: 58px;
-    font-size: 20px;
-    line-height: 20px;
-  }
-
-  .modal div {
-    max-width: 480px;
-  }
-
-  .guess-word-button {
-    width: 340px;
-  }
+@media only screen and (max-width:375px) {
+	.game-container {
+		width: 375px;
+		gap: 16px;
+		padding: 20px 0px;
+	}
 }
