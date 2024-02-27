@@ -95,7 +95,8 @@ const useWordle = (solution) => {
       }
       const formatted = formatGuess();
       addNewGuess(formatted);
-    }
+    } 
+    
     if (key === "Backspace") {
       setCurrentGuess((prev) => prev.slice(0, -1));
       return;
