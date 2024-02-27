@@ -2,9 +2,9 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { FiDelete } from "react-icons/fi";
 import { MdKeyboardReturn } from "react-icons/md";
 
-export default function Keypad({ usedKeys, onLetterClick }) {
+export default function Keypad({ usedKeys, onLetterClick, onEnterClick, onDeleteClick }) {
+  // eslint-disable-next-line no-unused-vars
   const [lettersVal, setLettersVal] = useState(null);
-  console.log("🚀 ~ Keypad ~ lettersVal:", lettersVal)
   const [activeKey, setActiveKey] = useState(null);
 
   const letters = useMemo(
@@ -44,8 +44,17 @@ export default function Keypad({ usedKeys, onLetterClick }) {
   );
 
   const handleLetterClick = (key) => {
-    setActiveKey(key);
-    onLetterClick(key);
+    console.log("🚀 ~ handleLetterClick ~ key:", key)
+    if (key === "enter") {
+      onEnterClick();
+    } 
+    if (key === "backspace") {
+      onDeleteClick();
+      // onLetterClick(key);
+      // setCurrentGuess((prev) => prev + key);
+    }
+      setActiveKey(key);
+      onLetterClick(key);
   };
 
   const handleMouseOver = (key) => {

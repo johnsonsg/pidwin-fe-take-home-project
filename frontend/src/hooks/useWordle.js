@@ -117,10 +117,14 @@ const useWordle = (solution) => {
     };
   }, []);
 
-  const handleLetterClick = (letter) => {
+  const handleLetterClick = (key) => {
     if (currentGuess.length < 5) {
-      setCurrentGuess((prev) => prev + letter);
+      setCurrentGuess((prev) => prev + key);
     }
+  };
+
+  const updateCurrentGuess = (newGuess) => {
+    setCurrentGuess(newGuess);
   };
 
   return {
@@ -133,6 +137,7 @@ const useWordle = (solution) => {
     handleLetterClick,
     resetGame,
     isDisabled: isCorrect || currentGuess.length !== 5,
+    updateCurrentGuess,
   };
 };
 

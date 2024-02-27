@@ -8,6 +8,7 @@ import Modal from "./Modal";
 export default function Wordle({ solution }) {
   const {
     currentGuess,
+	updateCurrentGuess,
     guesses,
     turn,
     isCorrect,
@@ -19,6 +20,16 @@ export default function Wordle({ solution }) {
   } = useWordle(solution);
   const [showModal, setShowModal] = useState(false);
   const [hasWon, setHasWon] = useState(false);
+
+
+  const handleBackspace = () => {
+    // Remove the last letter from currentGuess
+    const updatedGuess = currentGuess.slice(0, -1)
+    console.log("🚀 ~ handleBackspace ~ updatedGuess:", updatedGuess)
+    // Update the currentGuess using the hook function
+    updateCurrentGuess(updatedGuess);
+  };
+
 
   const handleGuessWord = async () => {
     try {
@@ -70,17 +81,25 @@ export default function Wordle({ solution }) {
   return (
     <div className="game-container">
       <Grid guesses={guesses} currentGuess={currentGuess} turn={turn} />
-      <button
-        onClick={handleGuessWord}
-        className={`
-						guess-word-button 
-						${isDisabled ? `disabled` : ``} 
-						${hasWon || isCorrect ? `winning` : ``}
-					`}
-      >
-        Guess Word
-      </button>
-      <Keypad usedKeys={usedKeys} onLetterClick={handleLetterClick} />
+	  <div style={{
+		display: 'block',
+		margin: '48px auto',
+	  }}>
+		<button
+			onClick={handleGuessWord}
+			className={`guess-word-button ${isDisabled ? `disabled` : ``} ${
+			hasWon || isCorrect ? `winning` : ``
+			}`}
+		>
+			Guess Word
+		</button>
+	  </div>
+      <Keypad 
+	  usedKeys={usedKeys} 
+	  onLetterClick={handleLetterClick} 
+	  onEnterClick={handleGuessWord}
+	  onDeleteClick={handleBackspace} 
+	  />
       {showModal && (
         <Modal
           isCorrect={isCorrect}
