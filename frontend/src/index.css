@@ -150,6 +150,26 @@ h1 {
   box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.8);
   color: #3a3a3c;
 }
+.modal button {
+    background-color: #538d4e;
+    border: 1px solid #4c8047;
+    border: none;
+    color: white;
+    padding: 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: normal;
+  }
+  .modal button:hover {
+    background-color: #4c8047;
+  }
 .guess-word-button {
   padding: 16px 24px;
   border-radius: 8px;
@@ -163,7 +183,6 @@ h1 {
   background-color: #3a3a3c;
   border: none;
   width: 340px;
-  margin: 48px auto;
 }
 .guess-word-button:hover {
   background-color: #5c5c62;
@@ -242,25 +261,5 @@ h1 {
     margin: 50% auto;
     box-shadow: 2px 2px 10px rgba(40, 40, 40, 0.8);
     color: #3a3a3c;
-  }
-  .modal button {
-    background-color: #538d4e;
-    border: 1px solid #4c8047;
-    border: none;
-    color: white;
-    padding: 14px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: normal;
-  }
-  .modal button:hover {
-    background-color: #4c8047;
   }
 }
