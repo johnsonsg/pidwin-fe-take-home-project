@@ -47,14 +47,13 @@ export default function Keypad({ usedKeys, onLetterClick, onEnterClick, onDelete
     console.log("🚀 ~ handleLetterClick ~ key:", key)
     if (key === "enter") {
       onEnterClick();
-    } 
-    if (key === "backspace") {
+    } else if (key === "backspace") {
       onDeleteClick();
-      // onLetterClick(key);
-      // setCurrentGuess((prev) => prev + key);
     }
+    else {
       setActiveKey(key);
       onLetterClick(key);
+    }
   };
 
   const handleMouseOver = (key) => {

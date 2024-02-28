@@ -8,7 +8,6 @@ import Modal from "./Modal";
 export default function Wordle({ solution }) {
   const {
     currentGuess,
-	updateCurrentGuess,
     guesses,
     turn,
     isCorrect,
@@ -20,16 +19,6 @@ export default function Wordle({ solution }) {
   } = useWordle(solution);
   const [showModal, setShowModal] = useState(false);
   const [hasWon, setHasWon] = useState(false);
-
-
-  const handleBackspace = () => {
-    // Remove the last letter from currentGuess
-    const updatedGuess = currentGuess.slice(0, -1)
-    console.log("🚀 ~ handleBackspace ~ updatedGuess:", updatedGuess)
-    // Update the currentGuess using the hook function
-    updateCurrentGuess(updatedGuess);
-  };
-
 
   const handleGuessWord = async () => {
     try {
@@ -97,8 +86,8 @@ export default function Wordle({ solution }) {
       <Keypad 
 	  usedKeys={usedKeys} 
 	  onLetterClick={handleLetterClick} 
-	  onEnterClick={handleGuessWord}
-	  onDeleteClick={handleBackspace} 
+	  onEnterClick={handleGuessWord} 
+	  onDeleteClick={() => handleKeyDown({ key: "Backspace" })}
 	  />
       {showModal && (
         <Modal
