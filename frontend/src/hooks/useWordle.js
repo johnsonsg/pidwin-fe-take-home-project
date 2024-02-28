@@ -93,6 +93,9 @@ const useWordle = (solution) => {
 				console.log('word must be 5 chars.')
 				return
 			}
+      if (currentGuess.length < 5) {
+        setCurrentGuess((prev) => prev + key)
+      }
 			const formatted = formatGuess()
 			addNewGuess(formatted)
 		}
@@ -116,9 +119,13 @@ const useWordle = (solution) => {
 		}
 	}, [])
 
-	const handleLetterClick = (letter) => {
+	const handleLetterClick = (key) => {
 		if (currentGuess.length < 5) {
-			setCurrentGuess((prev) => prev + letter)
+			setCurrentGuess((prev) => prev + key)
+		}
+    if (key === 'Backspace') {
+			setCurrentGuess((prev) => prev.slice(0, -1))
+			return
 		}
 	}
 
